@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/common/models/Pokemon.dart';
+import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsItemListWidget.dart';
 
 class DetailsListWidget extends StatelessWidget {
   final Pokemon pokemon;
@@ -16,15 +17,10 @@ class DetailsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 81,
-      left: 0,
-      right: 0,
-      height: 350,
+    return SliverToBoxAdapter(
       child: Container(
         color: pokemon.baseColor,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -53,26 +49,21 @@ class DetailsListWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: 30.0,
-              ),
-              child: SizedBox(
-                height: 200,
-                width: double.infinity,
-                child: PageView(
-                  onPageChanged: (index) => onChangePokemon(list[index]),
-                  controller: controller,
-                  children: list
-                      .map(
-                        (e) => Image.network(
-                          'http://www.serebii.net/pokemongo/pokemon/006.png',
-                          // 'e.image,'
-                          fit: BoxFit.contain,
-                        ),
-                      )
-                      .toList(),
-                ),
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              child: PageView(
+                onPageChanged: (index) => onChangePokemon(list[index]),
+                controller: controller,
+                children: list.map(
+                  (e) {
+                    bool diff = e.name != pokemon.name;
+                    return DetailsItemListWidget(
+                      isDiff: diff,
+                      pokemon: e,
+                    );
+                  },
+                ).toList(),
               ),
             )
           ],

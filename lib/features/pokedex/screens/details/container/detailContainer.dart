@@ -5,9 +5,6 @@ import 'package:pokedex_flutter/common/repositories/pokemonRepository.dart';
 import 'package:pokedex_flutter/common/widgets/poError.dart';
 import 'package:pokedex_flutter/common/widgets/poLoading.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/pages/detailsPage.dart';
-import 'package:pokedex_flutter/features/pokedex/screens/home/pages/homeError.dart';
-import 'package:pokedex_flutter/features/pokedex/screens/home/pages/homeLoading.dart';
-import 'package:pokedex_flutter/features/pokedex/screens/home/pages/homePage.dart';
 
 class DetailArguments {
   final Pokemon pokemon;
@@ -36,21 +33,23 @@ class DetailContainer extends StatefulWidget {
 
 class _DetailContainerState extends State<DetailContainer> {
   late PageController _controller;
+  late Future<List<Pokemon>> _future;
   Pokemon? _pokemon;
 
   @override
   void initState() {
     _controller = PageController(
-      viewportFraction: 2,
+      viewportFraction: 0.5,
       initialPage: widget.arguments.index!,
     );
+    _future = widget.repository.getAllPokemons();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Pokemon>>(
-        future: widget.repository.getAllPokemons(),
+        future: _future,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const PoLoading();

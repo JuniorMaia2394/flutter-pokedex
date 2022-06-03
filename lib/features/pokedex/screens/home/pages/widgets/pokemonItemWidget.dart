@@ -95,9 +95,8 @@ class PokemonItemWidget extends StatelessWidget {
             bottom: 20.0,
             right: 5.0,
             child: Image.network(
-              'http://www.serebii.net/pokemongo/pokemon/006.png',
-              // 'pokemon.image,'
-              width: 100,
+              pokemon.image,
+              width: 90,
               height: 100,
             ),
           ),
