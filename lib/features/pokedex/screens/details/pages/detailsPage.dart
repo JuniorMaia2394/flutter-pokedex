@@ -1,48 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/common/models/Pokemon.dart';
+import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsAppBarWidget.dart';
+import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsListWidget.dart';
 
 class DetailPage extends StatelessWidget {
   final Pokemon pokemon;
   final List<Pokemon> list;
+  final VoidCallback onBack;
+  final PageController controller;
+  final ValueChanged<Pokemon> onChangePokemon;
 
   DetailPage({
     required this.pokemon,
     required this.list,
+    required this.onBack,
+    required this.controller,
+    required this.onChangePokemon,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(pokemon.name),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
+      body: Stack(
+        children: [
+          DetailsAppBarWidget(
+            pokemon: pokemon,
+            onBack: onBack,
           ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 400,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 32),
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: list
-                        .map(
-                          (e) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              e.name,
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ),
-              ),
-            ],
+          DetailsListWidget(
+            onChangePokemon: onChangePokemon,
+            pokemon: pokemon,
+            list: list,
+            controller: controller,
           ),
-        ));
+        ],
+      ),
+    );
   }
 }

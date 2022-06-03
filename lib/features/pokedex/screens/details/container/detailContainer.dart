@@ -11,23 +11,46 @@ import 'package:pokedex_flutter/features/pokedex/screens/home/pages/homePage.dar
 
 class DetailArguments {
   final Pokemon pokemon;
+  final int? index;
 
-  DetailArguments({required this.pokemon});
+  DetailArguments({
+    required this.pokemon,
+    this.index = 0,
+  });
 }
 
-class DetailContainer extends StatelessWidget {
+class DetailContainer extends StatefulWidget {
   final IPokemonRepository repository;
   final DetailArguments arguments;
+  final VoidCallback onBack;
 
   const DetailContainer({
     required this.repository,
     required this.arguments,
+    required this.onBack,
   });
+
+  @override
+  State<DetailContainer> createState() => _DetailContainerState();
+}
+
+class _DetailContainerState extends State<DetailContainer> {
+  late PageController _controller;
+  Pokemon? _pokemon;
+
+  @override
+  void initState() {
+    _controller = PageController(
+      viewportFraction: 2,
+      initialPage: widget.arguments.index!,
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Pokemon>>(
-        future: repository.getAllPokemons(),
+        future: widget.repository.getAllPokemons(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const PoLoading();
@@ -35,9 +58,19 @@ class DetailContainer extends StatelessWidget {
 
           if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData) {
+            if (_pokemon == null) {
+              _pokemon = widget.arguments.pokemon;
+            }
             return DetailPage(
-              pokemon: arguments.pokemon,
+              pokemon: _pokemon!,
               list: snapshot.data!,
+              onBack: widget.onBack,
+              controller: _controller,
+              onChangePokemon: (Pokemon value) {
+                setState(() {
+                  _pokemon = value;
+                });
+              },
             );
           }
 

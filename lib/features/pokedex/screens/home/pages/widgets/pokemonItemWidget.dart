@@ -6,10 +6,12 @@ import 'package:pokedex_flutter/features/pokedex/screens/home/pages/widgets/type
 class PokemonItemWidget extends StatelessWidget {
   final Pokemon pokemon;
   final Function(String, DetailArguments) onItemTap;
+  final int index;
 
   PokemonItemWidget({
     required this.pokemon,
     required this.onItemTap,
+    required this.index,
   });
 
   @override
@@ -19,6 +21,7 @@ class PokemonItemWidget extends StatelessWidget {
         '/details',
         DetailArguments(
           pokemon: pokemon,
+          index: index,
         ),
       ),
       child: Stack(
@@ -92,7 +95,8 @@ class PokemonItemWidget extends StatelessWidget {
             bottom: 20.0,
             right: 5.0,
             child: Image.network(
-              pokemon.image,
+              'http://www.serebii.net/pokemongo/pokemon/006.png',
+              // 'pokemon.image,'
               width: 100,
               height: 100,
             ),
