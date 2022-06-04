@@ -26,6 +26,8 @@ class Pokemon {
   Color? get baseColor => _color(type: type[0]);
   String get image =>
       'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png';
+  String get base =>
+      'https://raw.githubusercontent.com/fanzeyi/pokemon.json/blob/master/$id.json';
 
   static Color? _color({required String type}) {
     switch (type) {

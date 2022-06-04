@@ -50,7 +50,7 @@ class DetailsListWidget extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 300,
+              height: 250,
               width: double.infinity,
               child: PageView(
                 onPageChanged: (index) => onChangePokemon(list[index]),

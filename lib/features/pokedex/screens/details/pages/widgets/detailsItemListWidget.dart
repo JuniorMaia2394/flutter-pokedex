@@ -29,11 +29,16 @@ class DetailsItemListWidget extends StatelessWidget {
             begin: isDiff ? 300 : 100,
           ),
           builder: (context, value, child) {
-            return Image.network(
-              pokemon.image,
-              color: isDiff ? Colors.black.withOpacity(0.4) : null,
-              fit: BoxFit.contain,
-              width: value,
+            return Padding(
+              padding: const EdgeInsets.only(
+                bottom: 10.0,
+              ),
+              child: Image.network(
+                pokemon.image,
+                color: isDiff ? Colors.black.withOpacity(0.4) : null,
+                fit: BoxFit.contain,
+                width: value,
+              ),
             );
           },
         ),

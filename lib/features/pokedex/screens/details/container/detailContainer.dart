@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/common/errors/failure.dart';
+import 'package:pokedex_flutter/common/models/Pokedex.dart';
 import 'package:pokedex_flutter/common/models/Pokemon.dart';
 import 'package:pokedex_flutter/common/repositories/pokemonRepository.dart';
 import 'package:pokedex_flutter/common/widgets/poError.dart';
@@ -8,6 +9,7 @@ import 'package:pokedex_flutter/features/pokedex/screens/details/pages/detailsPa
 
 class DetailArguments {
   final Pokemon pokemon;
+
   final int? index;
 
   DetailArguments({
@@ -18,6 +20,7 @@ class DetailArguments {
 
 class DetailContainer extends StatefulWidget {
   final IPokemonRepository repository;
+
   final DetailArguments arguments;
   final VoidCallback onBack;
 
