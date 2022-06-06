@@ -6,12 +6,18 @@ class Pokemon {
   final List<String> type;
   final int id;
   final String num;
+  final String height;
+  final String weight;
+  // final List<String> nextEvolution;
 
   Pokemon({
     required this.name,
     required this.type,
     required this.num,
     required this.id,
+    required this.height,
+    required this.weight,
+    // required this.nextEvolution,
   });
 
   factory Pokemon.fromMap(Map<String, dynamic> json) {
@@ -19,6 +25,11 @@ class Pokemon {
       name: json['name'],
       id: json['id'],
       num: json['num'],
+      height: json['height'],
+      weight: json['weight'],
+      // nextEvolution: (json['next_evolution'] as List<dynamic>)
+      //     .map((e) => e as String)
+      //     .toList(),
       type: (json['type'] as List<dynamic>).map((e) => e as String).toList(),
     );
   }
@@ -26,8 +37,6 @@ class Pokemon {
   Color? get baseColor => _color(type: type[0]);
   String get image =>
       'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png';
-  String get base =>
-      'https://raw.githubusercontent.com/fanzeyi/pokemon.json/blob/master/$id.json';
 
   static Color? _color({required String type}) {
     switch (type) {

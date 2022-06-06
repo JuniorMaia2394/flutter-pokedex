@@ -53,7 +53,7 @@ class PokemonItemWidget extends StatelessWidget {
                       Text(
                         '#${pokemon.num}',
                         style: TextStyle(
-                          color: Colors.black.withOpacity(0.4),
+                          color: Colors.white.withOpacity(0.5),
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
@@ -92,11 +92,19 @@ class PokemonItemWidget extends StatelessWidget {
             ),
           ),
           Positioned(
+            top: 50.0,
+            left: 60.0,
+            child: Image.asset(
+              'assets/images/pokeball.png',
+              height: 130,
+              color: Colors.white.withOpacity(0.3),
+            ),
+          ),
+          Positioned(
             bottom: 20.0,
             right: 5.0,
             child: Image.network(
               pokemon.image,
-              width: 90,
               height: 100,
             ),
           ),

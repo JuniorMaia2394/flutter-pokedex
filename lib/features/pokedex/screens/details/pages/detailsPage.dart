@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_flutter/common/models/Pokedex.dart';
 import 'package:pokedex_flutter/common/models/Pokemon.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsAppBarWidget.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsListWidget.dart';
@@ -79,44 +78,37 @@ class _DetailPageState extends State<DetailPage> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.favorite,
-                                      color: widget.pokemon.baseColor),
-                                  const Text(' Vida:'),
+                                  Icon(
+                                    Icons.info_outline,
+                                    color: widget.pokemon.baseColor,
+                                    size: 40,
+                                  ),
+                                  const Text(
+                                    ' INFO',
+                                    style: TextStyle(
+                                      fontSize: 30.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 20.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.favorite,
+                                        color: widget.pokemon.baseColor),
+                                    Text(' Altura: ${widget.pokemon.height}'),
+                                  ],
+                                ),
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.abc,
+                                  Icon(Icons.balance,
                                       color: widget.pokemon.baseColor),
-                                  const Text(' Ataque:'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.shield,
-                                      color: widget.pokemon.baseColor),
-                                  const Text(' Defesa'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.favorite,
-                                      color: widget.pokemon.baseColor),
-                                  const Text(' Ataque especial:'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.favorite,
-                                      color: widget.pokemon.baseColor),
-                                  const Text(' Defesa especial:'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.run_circle_outlined,
-                                      color: widget.pokemon.baseColor),
-                                  const Text(' Velocidade:'),
+                                  Text(' Peso: ${widget.pokemon.weight}'),
                                 ],
                               ),
                             ]),

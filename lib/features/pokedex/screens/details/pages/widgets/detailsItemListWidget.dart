@@ -12,37 +12,24 @@ class DetailsItemListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: AnimatedOpacity(
-        duration: const Duration(
-          milliseconds: 200,
-        ),
-        opacity: isDiff ? 0.4 : 1.0,
-        child: TweenAnimationBuilder<double>(
-          curve: Curves.easeIn,
-          duration: const Duration(
-            milliseconds: 200,
+    return Stack(
+      children: [
+        Text(
+          '#${pokemon.num}',
+          style: TextStyle(
+            fontSize: 150.0,
+            color: Colors.black.withOpacity(0.3),
           ),
-          tween: Tween<double>(
-            end: isDiff ? 100 : 300,
-            begin: isDiff ? 300 : 100,
-          ),
-          builder: (context, value, child) {
-            return Padding(
-              padding: const EdgeInsets.only(
-                bottom: 10.0,
-              ),
-              child: Image.network(
-                pokemon.image,
-                color: isDiff ? Colors.black.withOpacity(0.4) : null,
-                fit: BoxFit.contain,
-                width: value,
-              ),
-            );
-          },
         ),
-      ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Image.network(
+            pokemon.image,
+            fit: BoxFit.contain,
+            height: 200,
+          ),
+        ),
+      ],
     );
   }
 }

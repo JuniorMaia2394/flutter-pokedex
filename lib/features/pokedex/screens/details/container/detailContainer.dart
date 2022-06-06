@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/common/errors/failure.dart';
-import 'package:pokedex_flutter/common/models/Pokedex.dart';
 import 'package:pokedex_flutter/common/models/Pokemon.dart';
 import 'package:pokedex_flutter/common/repositories/pokemonRepository.dart';
 import 'package:pokedex_flutter/common/widgets/poError.dart';
@@ -42,7 +41,7 @@ class _DetailContainerState extends State<DetailContainer> {
   @override
   void initState() {
     _controller = PageController(
-      viewportFraction: 0.5,
+      viewportFraction: 1.0,
       initialPage: widget.arguments.index!,
     );
     _future = widget.repository.getAllPokemons();
