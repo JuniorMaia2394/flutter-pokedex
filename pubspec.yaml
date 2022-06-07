@@ -64,6 +64,7 @@ flutter:
   assets:
    - assets/images/pokeball.png
    - assets/images/pokeball_dark.png
+   - assets/images/pokemon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

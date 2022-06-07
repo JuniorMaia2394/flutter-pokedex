@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/common/models/Pokemon.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/container/detailContainer.dart';
@@ -19,15 +21,9 @@ class HomePage extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.white,
           centerTitle: false,
-          title: const Padding(
-            padding: EdgeInsets.only(left: 10.0),
-            child: Text(
-              'Pokedex',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 26,
-              ),
-            ),
+          title: Image.asset(
+            'assets/images/pokemon.png',
+            width: 100,
           ),
           actions: [
             Padding(
@@ -35,7 +31,7 @@ class HomePage extends StatelessWidget {
               child: IconButton(
                 onPressed: () {},
                 icon: const Icon(
-                  Icons.menu,
+                  Icons.search,
                   color: Colors.black,
                 ),
               ),
