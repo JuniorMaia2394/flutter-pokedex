@@ -5,9 +5,9 @@ class PoLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: CircularProgressIndicator(),
+        child: Image.asset('assets/images/pikachu.gif'),
       ),
     );
   }

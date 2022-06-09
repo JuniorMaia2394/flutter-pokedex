@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex_flutter/common/models/Pokemon.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsAppBarWidget.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsListWidget.dart';
+import 'package:pokedex_flutter/features/pokedex/screens/home/pages/widgets/typeWidget.dart';
 
 class DetailPage extends StatefulWidget {
   final Pokemon pokemon;
@@ -70,48 +71,114 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0, top: 20),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
+                      child: Scaffold(
+                        body: DefaultTabController(
+                          length: 2,
+                          child: Column(
                             children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.info_outline,
-                                    color: widget.pokemon.baseColor,
-                                    size: 40,
+                              TabBar(
+                                indicatorColor: widget.pokemon.baseColor,
+                                labelColor: Colors.black,
+                                tabs: const [
+                                  Tab(
+                                    text: 'Sobre',
                                   ),
-                                  const Text(
-                                    ' INFO',
-                                    style: TextStyle(
-                                      fontSize: 30.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  Tab(
+                                    text: 'Evolução',
                                   ),
                                 ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 20.0,
-                                ),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.favorite,
-                                        color: widget.pokemon.baseColor),
-                                    Text(' Altura: ${widget.pokemon.height}'),
-                                  ],
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 10.0,
+                                  ),
+                                  child: TabBarView(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 10.0,
+                                            ),
+                                            child: Text(
+                                              'Altura: ${widget.pokemon.height}',
+                                            ),
+                                          ),
+                                          Text(
+                                              'Peso: ${widget.pokemon.weight}'),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 10.0,
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                const Text('Tipo: '),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                    vertical: 10.0,
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: widget
+                                                        .pokemon.type
+                                                        .map(
+                                                          (e) => Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                              horizontal: 2.0,
+                                                            ),
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                  16.0,
+                                                                ),
+                                                                color: widget
+                                                                    .pokemon
+                                                                    .baseColor,
+                                                              ),
+                                                              height: 20,
+                                                              width: 70,
+                                                              child: Text(
+                                                                e,
+                                                                style:
+                                                                    const TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        )
+                                                        .toList(),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Text('teste 2 '),
+                                    ],
+                                  ),
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  Icon(Icons.balance,
-                                      color: widget.pokemon.baseColor),
-                                  Text(' Peso: ${widget.pokemon.weight}'),
-                                ],
-                              ),
-                            ]),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
