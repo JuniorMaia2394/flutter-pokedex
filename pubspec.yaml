@@ -37,6 +37,7 @@ dependencies:
   get: ^4.6.3
   dio: ^4.0.6
   http: ^0.13.4
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,7 @@ flutter:
    - assets/images/pokeball_dark.png
    - assets/images/pokemon.png
    - assets/images/pikachu.gif
+   - assets/images/allPokemon.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

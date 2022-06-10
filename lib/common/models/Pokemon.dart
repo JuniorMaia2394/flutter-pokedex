@@ -35,6 +35,7 @@ class Pokemon {
   }
 
   Color? get baseColor => _color(type: type[0]);
+  Color? get labelColor => _labelColor(type: type[0]);
   String get image =>
       'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png';
 
@@ -72,6 +73,49 @@ class Pokemon {
         return Colors.brown;
       case 'Dragon':
         return Colors.indigo[800];
+      case 'Steel':
+        return Colors.blueGrey;
+      case 'Fairy':
+        return Colors.pinkAccent[100];
+      default:
+        return Colors.grey;
+    }
+  }
+
+  static Color? _labelColor({required String type}) {
+    switch (type) {
+      case 'Normal':
+        return const Color(0xFFF5DEB3);
+      case 'Fire':
+        return const Color(0xFFFFE4E1);
+      case 'Water':
+        return const Color(0xFFAFEEEE);
+      case 'Grass':
+        return Color.fromARGB(196, 187, 249, 187);
+      case 'Electric':
+        return const Color(0xFFFFFACD);
+      case 'Ice':
+        return const Color(0xFFE0FFFF);
+      case 'Fighting':
+        return Color.fromARGB(175, 246, 234, 162);
+      case 'Poison':
+        return const Color(0xFFD8BFD8);
+      case 'Ground':
+        return const Color(0xFFFFEBCD);
+      case 'Flying':
+        return Colors.indigo[200];
+      case 'Psychic':
+        return const Color(0xFFFFC0CB);
+      case 'Bug':
+        return const Color(0xFFADFF2F);
+      case 'Rock':
+        return const Color(0xFFDCDCDC);
+      case 'Ghost':
+        return const Color.fromARGB(164, 221, 160, 221);
+      case 'Dark':
+        return Colors.brown;
+      case 'Dragon':
+        return const Color(0XFF87CEFA);
       case 'Steel':
         return Colors.blueGrey;
       case 'Fairy':

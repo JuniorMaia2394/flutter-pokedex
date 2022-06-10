@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pokedex_flutter/common/models/Pokemon.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsAppBarWidget.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsListWidget.dart';
@@ -6,7 +7,6 @@ import 'package:pokedex_flutter/features/pokedex/screens/home/pages/widgets/type
 
 class DetailPage extends StatefulWidget {
   final Pokemon pokemon;
-
   final List<Pokemon> list;
   final VoidCallback onBack;
   final PageController controller;
@@ -105,10 +105,17 @@ class _DetailPageState extends State<DetailPage> {
                                             ),
                                             child: Text(
                                               'Altura: ${widget.pokemon.height}',
+                                              style: GoogleFonts.kdamThmor(
+                                                fontSize: 17.0,
+                                              ),
                                             ),
                                           ),
                                           Text(
-                                              'Peso: ${widget.pokemon.weight}'),
+                                            'Peso: ${widget.pokemon.weight}',
+                                            style: GoogleFonts.kdamThmor(
+                                              fontSize: 17.0,
+                                            ),
+                                          ),
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
                                               vertical: 10.0,
@@ -117,7 +124,12 @@ class _DetailPageState extends State<DetailPage> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                const Text('Tipo: '),
+                                                Text(
+                                                  'Tipo: ',
+                                                  style: GoogleFonts.kdamThmor(
+                                                    fontSize: 17.0,
+                                                  ),
+                                                ),
                                                 Padding(
                                                   padding: const EdgeInsets
                                                       .symmetric(
@@ -145,16 +157,19 @@ class _DetailPageState extends State<DetailPage> {
                                                                 ),
                                                                 color: widget
                                                                     .pokemon
-                                                                    .baseColor,
+                                                                    .labelColor,
                                                               ),
-                                                              height: 20,
-                                                              width: 70,
+                                                              height: 30,
+                                                              width: 80,
                                                               child: Text(
                                                                 e,
-                                                                style:
-                                                                    const TextStyle(
-                                                                  color: Colors
-                                                                      .white,
+                                                                style: GoogleFonts
+                                                                    .kdamThmor(
+                                                                  color: widget
+                                                                      .pokemon
+                                                                      .baseColor,
+                                                                  fontSize:
+                                                                      14.5,
                                                                 ),
                                                                 textAlign:
                                                                     TextAlign
