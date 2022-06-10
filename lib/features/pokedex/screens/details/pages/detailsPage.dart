@@ -125,7 +125,7 @@ class _DetailPageState extends State<DetailPage> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Tipo: ',
+                                                  'Fraqueza: ',
                                                   style: GoogleFonts.kdamThmor(
                                                     fontSize: 17.0,
                                                   ),
@@ -139,7 +139,7 @@ class _DetailPageState extends State<DetailPage> {
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.start,
                                                     children: widget
-                                                        .pokemon.type
+                                                        .pokemon.weaknesses
                                                         .map(
                                                           (e) => Padding(
                                                             padding:
@@ -157,7 +157,7 @@ class _DetailPageState extends State<DetailPage> {
                                                                 ),
                                                                 color: widget
                                                                     .pokemon
-                                                                    .labelColor,
+                                                                    .weaknessesColor,
                                                               ),
                                                               height: 30,
                                                               width: 80,
@@ -165,9 +165,8 @@ class _DetailPageState extends State<DetailPage> {
                                                                 e,
                                                                 style: GoogleFonts
                                                                     .kdamThmor(
-                                                                  color: widget
-                                                                      .pokemon
-                                                                      .baseColor,
+                                                                  color: Colors
+                                                                      .white,
                                                                   fontSize:
                                                                       14.5,
                                                                 ),

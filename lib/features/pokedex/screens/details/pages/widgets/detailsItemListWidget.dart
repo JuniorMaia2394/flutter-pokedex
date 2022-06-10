@@ -26,19 +26,24 @@ class DetailsItemListWidget extends StatelessWidget {
             ),
           ),
         ),
-        Text(
-          '#${pokemon.num}',
-          style: TextStyle(
-            fontSize: 150.0,
-            color: Colors.black.withOpacity(0.3),
+        // Text(
+        //   '#${pokemon.num}',
+        //   style: TextStyle(
+        //     fontSize: 150.0,
+        //     color: Colors.black.withOpacity(0.3),
+        //   ),
+        // ),
+        Padding(
+          padding: const EdgeInsets.only(
+            bottom: 25.0,
           ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Image.network(
-            pokemon.image,
-            fit: BoxFit.contain,
-            height: 180,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Image.network(
+              pokemon.image,
+              fit: BoxFit.contain,
+              height: 180,
+            ),
           ),
         ),
       ],

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class Pokemon {
@@ -8,6 +7,7 @@ class Pokemon {
   final String num;
   final String height;
   final String weight;
+  final List<String> weaknesses;
   // final List<String> nextEvolution;
 
   Pokemon({
@@ -17,6 +17,7 @@ class Pokemon {
     required this.id,
     required this.height,
     required this.weight,
+    required this.weaknesses,
     // required this.nextEvolution,
   });
 
@@ -31,11 +32,15 @@ class Pokemon {
       //     .map((e) => e as String)
       //     .toList(),
       type: (json['type'] as List<dynamic>).map((e) => e as String).toList(),
+      weaknesses: (json['weaknesses'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
   }
 
   Color? get baseColor => _color(type: type[0]);
   Color? get labelColor => _labelColor(type: type[0]);
+  Color? get weaknessesColor => _weaknessesColor(weaknesses: weaknesses[0]);
   String get image =>
       'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png';
 
@@ -91,13 +96,13 @@ class Pokemon {
       case 'Water':
         return const Color(0xFFAFEEEE);
       case 'Grass':
-        return Color.fromARGB(196, 187, 249, 187);
+        return const Color.fromARGB(196, 187, 249, 187);
       case 'Electric':
         return const Color(0xFFFFFACD);
       case 'Ice':
         return const Color(0xFFE0FFFF);
       case 'Fighting':
-        return Color.fromARGB(175, 246, 234, 162);
+        return const Color.fromARGB(175, 246, 234, 162);
       case 'Poison':
         return const Color(0xFFD8BFD8);
       case 'Ground':
@@ -116,6 +121,49 @@ class Pokemon {
         return Colors.brown;
       case 'Dragon':
         return const Color(0XFF87CEFA);
+      case 'Steel':
+        return Colors.blueGrey;
+      case 'Fairy':
+        return Colors.pinkAccent[100];
+      default:
+        return Colors.grey;
+    }
+  }
+
+  static Color? _weaknessesColor({required String weaknesses}) {
+    switch (weaknesses) {
+      case 'Normal':
+        return Colors.brown[400];
+      case 'Fire':
+        return Colors.red;
+      case 'Water':
+        return Colors.blue;
+      case 'Grass':
+        return Colors.green;
+      case 'Electric':
+        return Colors.amber;
+      case 'Ice':
+        return Colors.cyanAccent[400];
+      case 'Fighting':
+        return Colors.orange;
+      case 'Poison':
+        return Colors.purple;
+      case 'Ground':
+        return Colors.orange[300];
+      case 'Flying':
+        return Colors.indigo[200];
+      case 'Psychic':
+        return Colors.pink;
+      case 'Bug':
+        return Colors.lightGreen[500];
+      case 'Rock':
+        return Colors.grey;
+      case 'Ghost':
+        return Colors.indigo[400];
+      case 'Dark':
+        return Colors.brown;
+      case 'Dragon':
+        return Colors.indigo[800];
       case 'Steel':
         return Colors.blueGrey;
       case 'Fairy':
