@@ -25,16 +25,16 @@ class DetailsAppBarWidget extends StatelessWidget {
         ),
       ),
       centerTitle: false,
-      title: isOnTop
-          ? Container()
-          : Text(
-              pokemon.name,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
+      // title: isOnTop
+      //     ? Container()
+      //     : Text(
+      //         pokemon.name,
+      //         style: const TextStyle(
+      //           fontSize: 20,
+      //           fontWeight: FontWeight.bold,
+      //           color: Colors.white,
+      //         ),
+      //       ),
     );
   }
 }

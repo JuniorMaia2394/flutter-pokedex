@@ -35,12 +35,17 @@ class _DetailsListWidgetState extends State<DetailsListWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Flexible(
-                    child: Text(
-                      widget.pokemon.name,
-                      style: const TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 10.0,
+                      ),
+                      child: Text(
+                        widget.pokemon.name,
+                        style: const TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
