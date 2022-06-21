@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_flutter/common/models/Evolution.dart';
 
 class Pokemon {
   final String name;
@@ -8,7 +9,7 @@ class Pokemon {
   final String height;
   final String weight;
   final List<String> weaknesses;
-  // final List<String> nextEvolution;
+  Evolution? nextEvolution;
 
   Pokemon({
     required this.name,
@@ -18,7 +19,7 @@ class Pokemon {
     required this.height,
     required this.weight,
     required this.weaknesses,
-    // required this.nextEvolution,
+    this.nextEvolution,
   });
 
   factory Pokemon.fromMap(Map<String, dynamic> json) {
@@ -28,9 +29,9 @@ class Pokemon {
       num: json['num'],
       height: json['height'],
       weight: json['weight'],
-      // nextEvolution: (json['next_evolution'] as List<dynamic>)
-      //     .map((e) => e as String)
-      //     .toList(),
+      nextEvolution: json['next_evolution'] == null
+          ? null
+          : Evolution.fromJson(json["next_evolution"][0]),
       type: (json['type'] as List<dynamic>).map((e) => e as String).toList(),
       weaknesses: (json['weaknesses'] as List<dynamic>)
           .map((e) => e as String)

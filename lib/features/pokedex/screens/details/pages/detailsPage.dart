@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pokedex_flutter/common/models/Evolution.dart';
 import 'package:pokedex_flutter/common/models/Pokemon.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsAppBarWidget.dart';
 import 'package:pokedex_flutter/features/pokedex/screens/details/pages/widgets/detailsListWidget.dart';
@@ -185,7 +186,12 @@ class _DetailPageState extends State<DetailPage> {
                                           ),
                                         ],
                                       ),
-                                      Text('teste 2 '),
+                                      Text(
+                                        '${widget.pokemon.nextEvolution?.name}' ==
+                                                null
+                                            ? 'Sem evolução'
+                                            : '${widget.pokemon.nextEvolution?.name}',
+                                      ),
                                     ],
                                   ),
                                 ),
