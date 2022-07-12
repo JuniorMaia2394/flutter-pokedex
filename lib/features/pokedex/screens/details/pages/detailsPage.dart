@@ -151,15 +151,15 @@ class _DetailPageState extends State<DetailPage> {
                                                             child: Container(
                                                               decoration:
                                                                   BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                  16.0,
-                                                                ),
-                                                                color: widget
-                                                                    .pokemon
-                                                                    .weaknessesColor,
-                                                              ),
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .circular(
+                                                                        16.0,
+                                                                      ),
+                                                                      color: widget
+                                                                          .pokemon
+                                                                          .weaknessesColor(
+                                                                              weaknesses: e)),
                                                               height: 30,
                                                               width: 80,
                                                               child: Text(

@@ -38,10 +38,15 @@ class Pokemon {
           .toList(),
     );
   }
+  // weaknessesLabelColor(weaknesses) {
+  //   for (var i = 0; i < weaknesses.length; i++) {
+  //     return weaknesses[i];
+  //   }
+  // }
 
   Color? get baseColor => _color(type: type[0]);
   Color? get labelColor => _labelColor(type: type[0]);
-  Color? get weaknessesColor => _weaknessesColor(weaknesses: weaknesses[0]);
+  // Color? get weaknessesColor => _weaknessesColor(weaknesses: weaknesses[0]);
   String get image =>
       'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png';
 
@@ -131,7 +136,7 @@ class Pokemon {
     }
   }
 
-  static Color? _weaknessesColor({required String weaknesses}) {
+  Color? weaknessesColor({required String weaknesses}) {
     switch (weaknesses) {
       case 'Normal':
         return Colors.brown[400];
